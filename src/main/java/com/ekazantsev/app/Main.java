@@ -26,6 +26,7 @@ public class Main {
         Options options = new Options();
         options.addOption("i", "input", true,
                 "input .json file or directory containing .json files");
+        options.addOption("c", "config", true, "input .txt file with configuration");
 
         // парсинг командной строки ---------------------------------------------------------------------
         CommandLineParser cmdParser = new DefaultParser();
@@ -39,21 +40,20 @@ public class Main {
 
         // обработка ключей -----------------------------------------------------------------------------
         // если в командной строке есть -i
-        if (cmd.hasOption("i")) {
+        if (cmd.hasOption("i") && cmd.hasOption("c")) {
             // если input - json файл
-            if (cmd.getOptionValue("i").contains(".json")) {
+            if (cmd.getOptionValue("i").contains(".json") && cmd.getOptionValue("c").contains(".txt")) {
 
                 // запускаем проверку
-                find.FindStatement(cmd.getOptionValue("i"));
+                find.FindStatement(cmd.getOptionValue("i"), cmd.getOptionValue("c"));
 
             }
 
             // если input - папка (если input не содержит .json)
-            if (!cmd.getOptionValue("i").contains(".json") &&  !cmd.getOptionValue("i").equals(cmd.getOptionValue("o"))) {
+            if (!cmd.getOptionValue("i").contains(".json") && cmd.getOptionValue("c").contains(".txt")) {
 
                 File inputFolder = new File(cmd.getOptionValue("i"));
-
-                find.processFolder(inputFolder);
+                find.processFolder(inputFolder, cmd.getOptionValue("c"));
 
             }
         }

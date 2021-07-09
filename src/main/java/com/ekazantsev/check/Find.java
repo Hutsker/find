@@ -8,41 +8,45 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import com.google.gson.*;
 
 public class Find
 {
-    public void processFolder(File folder) {
+    public void processFolder(File folder, String configFile) {
         File[] folderEntries = folder.listFiles();
 
         for (File entry : folderEntries) {
             if (entry.isDirectory()) {
-                processFolder(entry);
+                processFolder(entry, configFile);
                 continue;
             }
 
             System.out.println(entry.getPath());
 
             // строим дерево и сохраняем его
-            FindStatement(entry.getPath());
+            FindStatement(entry.getPath(), configFile);
 
         }
     }
-
     List<String> objects = new ArrayList<>();
     String cur_object = "";
     List<String> statements = new ArrayList<>();
 
-    public void FindStatement(String inputFile)
+    public void FindStatement(String inputFile, String configFile)
 
     {
         objects.add("procedure");
         objects.add("function");
-        statements.add("commit_statement");
-        statements.add("execute_immediate");
+        objects.add("trigger");
+        //statements.add("commit_statement");
+        //statements.add("execute_immediate");
         try
         {
+            statements = Files.readAllLines(Paths.get(configFile), Charset.forName("Windows-1251"));
+            for(int i = 0; i<statements.size(); i++)
+                statements.set(i,statements.get(i).trim().toLowerCase());
             FileReader reader = new FileReader(inputFile);
             JsonParser jsonParser = new JsonParser();
             JsonObject jsonObject = (JsonObject) jsonParser.parse(reader);
