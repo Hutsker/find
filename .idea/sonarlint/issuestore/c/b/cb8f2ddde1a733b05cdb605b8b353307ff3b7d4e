@@ -1,0 +1,21 @@
+
+H
+java:S3740"/Provide the parametrized type for this generic.(±ÉÊ£ıÿÿÿÿ
+N
+java:S1128"5Remove this unused import 'java.nio.charset.Charset'.(ü¶ØŸıÿÿÿÿ
+D
+java:S1128"0Remove this unused import 'java.nio.file.Files'.(‚ƒü
+D
+java:S1128"0Remove this unused import 'java.nio.file.Paths'.(áè°¯
+h	java:S116"URename this field "cur_object" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õô‡–
+L	java:S106"9Replace this use of System.out or System.err by a logger.(Ûß¨ô
+f	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞÇÛ¬úÿÿÿÿ
+C
+java:S6212"/Declare this local variable with "var" instead.(Á°§±
+a	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Äû¤
+f
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(Äû¤
+C
+java:S6212"/Declare this local variable with "var" instead.(‡ñ‰Ï
+T	java:S125"<This block of commented-out lines of code should be removed.(œ ºıÿÿÿÿ
+L	java:S106"9Replace this use of System.out or System.err by a logger.(ÏıûÑ
