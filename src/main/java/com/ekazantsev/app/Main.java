@@ -27,7 +27,7 @@ public class Main {
         options.addOption("i", "input", true,
                 "input .json file or directory containing .json files");
         options.addOption("c", "config", true, "input .txt file with configuration");
-
+        options.addOption("o", "objects", true, "input .txt file with pl/sql objects");
         // парсинг командной строки ---------------------------------------------------------------------
         CommandLineParser cmdParser = new DefaultParser();
         CommandLine cmd = null;
@@ -40,20 +40,20 @@ public class Main {
 
         // обработка ключей -----------------------------------------------------------------------------
         // если в командной строке есть -i
-        if (cmd.hasOption("i") && cmd.hasOption("c")) {
+        if (cmd.hasOption("i") && cmd.hasOption("c") && cmd.hasOption("o")) {
             // если input - json файл
-            if (cmd.getOptionValue("i").contains(".json") && cmd.getOptionValue("c").contains(".txt")) {
+            if (cmd.getOptionValue("i").contains(".json") && cmd.getOptionValue("c").contains(".txt") && cmd.getOptionValue("o").contains(".txt")) {
 
                 // запускаем проверку
-                find.FindStatement(cmd.getOptionValue("i"), cmd.getOptionValue("c"));
+                find.FindStatement(cmd.getOptionValue("i"), cmd.getOptionValue("c"), cmd.getOptionValue("o"));
 
             }
 
             // если input - папка (если input не содержит .json)
-            if (!cmd.getOptionValue("i").contains(".json") && cmd.getOptionValue("c").contains(".txt")) {
+            if (!cmd.getOptionValue("i").contains(".json") && cmd.getOptionValue("c").contains(".txt") && cmd.getOptionValue("o").contains(".txt")) {
 
                 File inputFolder = new File(cmd.getOptionValue("i"));
-                find.processFolder(inputFolder, cmd.getOptionValue("c"));
+                find.processFolder(inputFolder, cmd.getOptionValue("c"), cmd.getOptionValue("o"));
 
             }
         }
