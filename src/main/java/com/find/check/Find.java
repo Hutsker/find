@@ -1,4 +1,4 @@
-package com.ekazantsev.check;
+package com.find.check;
 
 import java.io.File;
 import java.io.FileReader;

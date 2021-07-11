@@ -1,4 +1,4 @@
-package com.ekazantsev.app;
+package com.find.app;
 
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.misc.Interval;

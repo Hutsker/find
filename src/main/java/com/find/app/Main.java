@@ -1,11 +1,9 @@
-package com.ekazantsev.app;
+package com.find.app;
 
-import com.ekazantsev.check.Find;
+import com.find.check.Find;
 import org.apache.commons.cli.*;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
