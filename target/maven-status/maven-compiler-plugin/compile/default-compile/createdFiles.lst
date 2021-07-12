@@ -1,3 +1,3 @@
-com\ekazantsev\check\Find.class
-com\ekazantsev\app\Main.class
-com\ekazantsev\app\CaseChangingCharStream.class
+com\find\check\Find.class
+com\find\app\Main.class
+com\find\app\CaseChangingCharStream.class

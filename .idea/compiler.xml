@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="plsqlParser" />
         <module name="parser-plsql-CheckSyntacsis" />
+        <module name="find" />
       </profile>
     </annotationProcessing>
   </component>

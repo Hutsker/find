@@ -1,2 +1,0 @@
-commit_statement
-execute_immediate

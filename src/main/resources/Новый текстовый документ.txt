@@ -1,1 +1,0 @@
-java -jar plsqlParser-1.0-jar-with-dependencies.jar -i "C:\Users\Alexey\OneDrive\Документы\gitlab\ertelecom\parser-plsql\src\main\resources\test.sql" -o "C:\Users\Alexey\OneDrive\Документы\gitlab\ertelecom\parser-plsql\src\main\resources\file1.json"

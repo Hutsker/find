@@ -75,9 +75,14 @@ public class Find
                     {
                         case "procedure_body":
                         case "function_body" :
-                        case "trigger_body" :
                             JsonArray ja = jsonObject.get(it.toString()).getAsJsonArray();
                             cur_object=ja.get(0).getAsJsonObject().get("text").toString().substring(1,ja.get(0).getAsJsonObject().get("text").toString().length()-1)+" "+ja.get(1).getAsJsonObject().get("identifier").getAsJsonArray().get(0).getAsJsonObject().get("id_expression").getAsJsonArray().get(0).getAsJsonObject().get("regular_id").getAsJsonArray().get(0).getAsJsonObject().get("text").toString().substring(1, ja.get(1).getAsJsonObject().get("identifier").getAsJsonArray().get(0).getAsJsonObject().get("id_expression").getAsJsonArray().get(0).getAsJsonObject().get("regular_id").getAsJsonArray().get(0).getAsJsonObject().get("text").toString().length()-1)+" ";
+                            break;
+                        case "procedure_name" :
+                        case "function_name" :
+                        case "trigger_name" :
+                            JsonArray jar = jsonObject.get(it.toString()).getAsJsonArray();
+                            cur_object=it.toString().substring(0,it.toString().indexOf("_"))+ " " +jar.get(0).getAsJsonObject().get("identifier").getAsJsonArray().get(0).getAsJsonObject().get("id_expression").getAsJsonArray().get(0).getAsJsonObject().get("regular_id").getAsJsonArray().get(0).getAsJsonObject().get("text").toString().substring(1, jar.get(0).getAsJsonObject().get("identifier").getAsJsonArray().get(0).getAsJsonObject().get("id_expression").getAsJsonArray().get(0).getAsJsonObject().get("regular_id").getAsJsonArray().get(0).getAsJsonObject().get("text").toString().length()-1)+" ";
                             break;
                         case "create_package_body" :
                             JsonArray jarr = jsonObject.get(it.toString()).getAsJsonArray();
@@ -88,9 +93,13 @@ public class Find
                 for(String s : statements)
                     if(it.toString().contains(s) && !f)
                     {
+                        String str = "";
+                        if (cur_package != ""){
+                            str = "package " + cur_package.substring(1,cur_package.length()-1);
+                        }
                         //System.out.println(it.toString());
                         JsonArray ja = jsonObject.get(it.toString()).getAsJsonArray();
-                        System.out.println("package " + cur_package.substring(1,cur_package.length()-1) + " " +cur_object + "Line " + ja.get(0).getAsJsonObject().get("line").toString() + " " +it.toString());
+                        System.out.println(str + " " +cur_object + "Line " + ja.get(0).getAsJsonObject().get("line").toString() + " " +it.toString());
                         f=true;
                     }
                 if(!f)

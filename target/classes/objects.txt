@@ -1,3 +1,4 @@
 procedure
 function
+trigger
 package
